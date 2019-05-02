@@ -1,5 +1,5 @@
-# Api Key resource file
-app/src/main/res/values/keys.xml
+# Api Key 
+app/src/main/java/com/marcelokmats/marvelcharacters/util/Keys.kt
 
 # Created by https://www.gitignore.io/api/android
 # Edit at https://www.gitignore.io/?templates=android

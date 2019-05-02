@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MarvelCharacters</string>
+    <string name="error_character_paging_list">Couldn\'t load more characters</string>
+    <string name="retry">Try again</string>
 </resources>
