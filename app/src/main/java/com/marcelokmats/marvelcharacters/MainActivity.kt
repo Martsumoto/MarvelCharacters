@@ -1,9 +1,12 @@
 package com.marcelokmats.marvelcharacters
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.marcelokmats.marvelcharacters.characterDetail.CharacterDetailActivity
+import com.marcelokmats.marvelcharacters.model.MarvelCharacter
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
@@ -13,7 +16,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mMainViewModel: MainViewModel
 
-
+    companion object {
+        const val MARVEL_CHARACTER = "MARVEL_CHARACTER"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,23 +32,18 @@ class MainActivity : AppCompatActivity() {
         this.setupCharactersList()
     }
 
-    override fun onResume() {
-        super.onResume()
-//        mMainViewModel.mCharactersReponseLiveData.observe(this, Observer {
-//            characters -> populateCharactersList(characters)
-//        })
-    }
-//
-//    private fun populateCharactersList(characters: List<MarvelCharacter>) {
-//        mAdapter = CharactersAdapter(this, characters)
-//        list.adapter = mAdapter
-//    }
-
     private fun setupCharactersList() {
-        val adapter = CharactersAdapter (characterSelectedListener = {}, retryCallback = { mMainViewModel.retry() })
+        val adapter = CharactersAdapter (characterSelectedListener = this::onCharacterClick, retryCallback = { mMainViewModel.retry() })
         list.adapter = adapter
         mMainViewModel.characterList.observe(this, Observer {
             adapter.submitList(it)
         })
     }
+
+    private fun onCharacterClick(marvelCharacter: MarvelCharacter) {
+        val intent = Intent(this, CharacterDetailActivity::class.java)
+        intent.putExtra(MARVEL_CHARACTER, marvelCharacter)
+        startActivity(intent)
+    }
+
 }
