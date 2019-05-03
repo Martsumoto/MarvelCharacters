@@ -1,8 +1,7 @@
-package com.marcelokmats.marvelcharacters
+package com.marcelokmats.marvelcharacters.charactersList
 
 import android.app.Application
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -15,7 +14,7 @@ import com.marcelokmats.marvelcharacters.util.State
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-class MainViewModel(application: Application) : BaseViewModel(application) {
+class CharactersListViewModel(application: Application) : BaseViewModel(application) {
 
     companion object {
         const val PAGE_SIZE = 10
@@ -25,8 +24,6 @@ class MainViewModel(application: Application) : BaseViewModel(application) {
     lateinit var marvelApi: MarvelApi
 
     private val subs = CompositeDisposable()
-
-    val mCharactersReponseLiveData = MutableLiveData<List<MarvelCharacter>>()
 
     private val characterDataSourceFactory : CharacterDataSourceFactory
     var characterList : LiveData<PagedList<MarvelCharacter>>

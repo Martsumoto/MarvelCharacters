@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.marcelokmats.marvelcharacters.MainActivity
 import com.marcelokmats.marvelcharacters.R
+import com.marcelokmats.marvelcharacters.charactersList.CharactersListActivity
 import com.marcelokmats.marvelcharacters.model.MarvelCharacter
 import com.marcelokmats.marvelcharacters.util.setUrl
 import kotlinx.android.synthetic.main.character_detail_activity.*
@@ -18,7 +18,7 @@ class CharacterDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.character_detail_activity)
 
-        mMarvelCharacter = intent.getParcelableExtra(MainActivity.MARVEL_CHARACTER)
+        mMarvelCharacter = intent.getParcelableExtra(CharactersListActivity.MARVEL_CHARACTER)
         this.populateViews()
     }
 

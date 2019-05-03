@@ -2,7 +2,7 @@ package com.marcelokmats.marvelcharacters.di
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import com.marcelokmats.marvelcharacters.MainViewModel
+import com.marcelokmats.marvelcharacters.charactersList.CharactersListViewModel
 import com.marcelokmats.marvelcharacters.di.module.NetworkModule
 
 
@@ -19,7 +19,7 @@ abstract class BaseViewModel(application: Application): AndroidViewModel(applica
 
     private fun inject() {
         when (this) {
-            is MainViewModel -> injector.inject(this)
+            is CharactersListViewModel -> injector.inject(this)
         }
     }
 }

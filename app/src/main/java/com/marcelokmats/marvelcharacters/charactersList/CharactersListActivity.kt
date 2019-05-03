@@ -1,20 +1,22 @@
-package com.marcelokmats.marvelcharacters
+package com.marcelokmats.marvelcharacters.charactersList
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.marcelokmats.marvelcharacters.BuildConfig
+import com.marcelokmats.marvelcharacters.R
 import com.marcelokmats.marvelcharacters.characterDetail.CharacterDetailActivity
 import com.marcelokmats.marvelcharacters.model.MarvelCharacter
 import kotlinx.android.synthetic.main.activity_main.*
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class CharactersListActivity : AppCompatActivity() {
 
     private lateinit var mAdapter: CharactersAdapter
 
-    private lateinit var mMainViewModel: MainViewModel
+    private lateinit var mViewModel: CharactersListViewModel
 
     companion object {
         const val MARVEL_CHARACTER = "MARVEL_CHARACTER"
@@ -28,14 +30,16 @@ class MainActivity : AppCompatActivity() {
             Timber.plant(Timber.DebugTree())
         }
 
-        mMainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        mViewModel = ViewModelProviders.of(this).get(CharactersListViewModel::class.java)
         this.setupCharactersList()
     }
 
     private fun setupCharactersList() {
-        val adapter = CharactersAdapter (characterSelectedListener = this::onCharacterClick, retryCallback = { mMainViewModel.retry() })
+        val adapter =
+            CharactersAdapter(characterSelectedListener = this::onCharacterClick,
+                retryCallback = { mViewModel.retry() })
         list.adapter = adapter
-        mMainViewModel.characterList.observe(this, Observer {
+        mViewModel.characterList.observe(this, Observer {
             adapter.submitList(it)
         })
     }

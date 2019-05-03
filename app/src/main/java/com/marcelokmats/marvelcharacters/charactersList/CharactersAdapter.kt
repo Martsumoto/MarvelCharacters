@@ -1,9 +1,10 @@
-package com.marcelokmats.marvelcharacters
+package com.marcelokmats.marvelcharacters.charactersList
 
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.marcelokmats.marvelcharacters.R
 import com.marcelokmats.marvelcharacters.model.MarvelCharacter
 import com.marcelokmats.marvelcharacters.util.State
 

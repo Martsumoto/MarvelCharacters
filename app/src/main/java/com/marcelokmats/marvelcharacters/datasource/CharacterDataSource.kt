@@ -2,7 +2,7 @@ package com.marcelokmats.marvelcharacters.datasource
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.marcelokmats.marvelcharacters.MainViewModel.Companion.PAGE_SIZE
+import com.marcelokmats.marvelcharacters.charactersList.CharactersListViewModel.Companion.PAGE_SIZE
 import com.marcelokmats.marvelcharacters.api.MarvelApi
 import com.marcelokmats.marvelcharacters.model.MarvelCharacter
 import com.marcelokmats.marvelcharacters.util.State
